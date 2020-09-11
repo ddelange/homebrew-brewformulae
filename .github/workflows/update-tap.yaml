@@ -9,7 +9,7 @@ jobs:
       - name: Update Homebrew formulae
         uses: dawidd6/action-homebrew-bump-formula@master
         with:
-          token: '${{ secrets.TOKEN }}'
-          tap: '${{ github.repository }}'
+          token: ${{ secrets.TOKEN }}
+          tap: ${{ github.repository }}
           force: false
           livecheck: true
