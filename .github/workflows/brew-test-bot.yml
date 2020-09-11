@@ -4,6 +4,13 @@ on:
     branches: master
   pull_request:
 jobs:
+  cancel_previous_runs:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: n1hility/cancel-previous-runs@v2
+        with: 
+          token: ${{ secrets.GITHUB_TOKEN }}:
   test-bot:
     runs-on: ${{ matrix.os }}
     strategy:
