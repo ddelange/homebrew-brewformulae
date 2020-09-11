@@ -1,7 +1,7 @@
 name: update-tap
 on:
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '0 */2 * * *'
 jobs:
   update-tap:
     runs-on: macos-latest
