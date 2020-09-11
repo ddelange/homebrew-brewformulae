@@ -1,0 +1,17 @@
+name: automerge
+on:
+  pull_request_review:
+    types: submitted
+  check_suite:
+    types: completed
+jobs:
+  automerge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: automerge
+        uses: pascalgn/automerge-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MERGE_FILTER_AUTHOR: ddelange
+          MERGE_METHOD: squash
+          MERGE_RETRY_SLEEP: 600000

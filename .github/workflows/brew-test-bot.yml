@@ -1,0 +1,23 @@
+name: brew test-bot
+on:
+  push:
+    branches: master
+  pull_request:
+jobs:
+  cancel_previous_runs:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: n1hility/cancel-previous-runs@v2
+        with: 
+          token: ${{ secrets.GITHUB_TOKEN }}
+  test-bot:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    steps:
+      - name: Set up Homebrew
+        id: set-up-homebrew
+        uses: homebrew/actions/setup-homebrew@master
+      - run: brew test-bot
