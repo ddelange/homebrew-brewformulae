@@ -12,7 +12,7 @@ class Yt < Formula
   depends_on "atomicparsley"
   depends_on "ffmpeg"
   depends_on "youtube-dl"
-  
+
   def install
     system "bash", "./install.sh", "--prefix=#{prefix}", "yt"
   end
