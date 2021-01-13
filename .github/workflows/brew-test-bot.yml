@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: n1hility/cancel-previous-runs@v2
-        with: 
+        with:
           token: ${{ secrets.GITHUB_TOKEN }}
   test-bot:
     runs-on: ${{ matrix.os }}
@@ -27,4 +27,4 @@ jobs:
           key: ${{runner.os}}-rubygems-${{steps.setup.outputs.gems-hash}}
           restore-keys: ${{runner.os}}-rubygems-
       - name: Check formulae
-        run: brew test-bot
+        run: brew test-bot --build-from-source
