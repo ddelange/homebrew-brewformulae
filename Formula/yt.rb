@@ -10,7 +10,7 @@ class Yt < Formula
   bottle :unneeded
 
   depends_on "atomicparsley"
-  depends_on "ffmpeg"
+  depends_on "homebrew-ffmpeg/ffmpeg/ffmpeg" => ["with-fdk-aac", "with-srt", "with-wavpack", "with-xvid"]
   depends_on "youtube-dl"
 
   def install
