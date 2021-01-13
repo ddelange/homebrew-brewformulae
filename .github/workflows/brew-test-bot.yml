@@ -26,7 +26,8 @@ jobs:
           path: ${{steps.setup.outputs.gems-path}}
           key: ${{runner.os}}-rubygems-${{steps.setup.outputs.gems-hash}}
           restore-keys: ${{runner.os}}-rubygems-
+      # - name: Check formulae
+      #   run: brew test-bot --only-formulae
+      - uses: actions/checkout@v2
       - name: Check formulae
-        # run: brew test-bot --only-formulae
-        uses: actions/checkout@v2
         run: brew install ./Formula/*.rb
