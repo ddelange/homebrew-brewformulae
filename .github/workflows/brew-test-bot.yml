@@ -34,4 +34,6 @@ jobs:
         env:
           HOMEBREW_NO_INSTALL_CLEANUP: 1
           HOMEBREW_NO_AUTO_UPDATE: 1
-        run: brew install --force ./Formula/*.rb
+        run: |
+          brew install python || brew link --overwrite python
+          brew install ./Formula/*.rb
