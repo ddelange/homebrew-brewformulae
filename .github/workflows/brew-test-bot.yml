@@ -28,4 +28,4 @@ jobs:
           restore-keys: ${{runner.os}}-rubygems-
       - name: Check formulae
         # run: brew test-bot --only-formulae
-        run: brew install --build-from-source ./Formula/*.rb
+        run: brew install ./Formula/*.rb
