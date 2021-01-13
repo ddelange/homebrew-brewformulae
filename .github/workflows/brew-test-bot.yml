@@ -35,5 +35,5 @@ jobs:
           HOMEBREW_NO_INSTALL_CLEANUP: 1
           HOMEBREW_NO_AUTO_UPDATE: 1
         run: |
-          brew install python || brew link --overwrite python
-          brew install ./Formula/*.rb
+          brew install ./Formula/*.rb  || true  # mac exits 1 although everything installed
+          yt -h
