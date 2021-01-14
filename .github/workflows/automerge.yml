@@ -1,9 +1,8 @@
 name: automerge
 on:
-  # trigger when checks of a PR complete
+  # trigger when checks complete
   check_suite:
     types: [completed]
-    branches-ignore: [$default-branch]
   # trigger when checks already passed and a required review is submitted
   pull_request_review:
     types: [submitted]
