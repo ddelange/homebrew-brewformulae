@@ -1,22 +1,6 @@
 name: automerge
 on:
-  pull_request:
-    types:
-      - labeled
-      - unlabeled
-      - synchronize
-      - opened
-      - edited
-      - ready_for_review
-      - reopened
-      - unlocked
-  pull_request_review:
-    types:
-      - submitted
-  check_suite:
-    types:
-      - completed
-  status: {}
+  status: {}  # https://docs.github.com/en/free-pro-team@latest/rest/reference/repos#statuses
 jobs:
   automerge:
     runs-on: ubuntu-latest
@@ -28,4 +12,4 @@ jobs:
           MERGE_FILTER_AUTHOR: ddelange
           MERGE_METHOD: squash
           MERGE_RETRY_SLEEP: 600000
-          MERGE_LABELS: '!WIP'  # merge all PRs when checks passed
+          MERGE_LABELS: '!WIP'  # merge PR when branch protection allows it (checks, reviews, draft, ...)
