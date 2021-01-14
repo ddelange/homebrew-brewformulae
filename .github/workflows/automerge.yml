@@ -20,7 +20,7 @@ jobs:
           MERGE_FILTER_AUTHOR: ddelange
           MERGE_METHOD: squash
           MERGE_RETRIES: 0
-          MERGE_LABELS: '!WIP'  # merge the PR when branch protection allows it (checks, reviews, draft, ...)
+          MERGE_LABELS: '!WIP,!do not merge'  # merge the PR when branch protection allows it (checks, reviews, draft, ...)
           UPDATE_LABELS: ''  # update with base branch when base has "Require branches to be up to date before merging"
           MERGE_DELETE_BRANCH: true
           UPDATE_RETRIES: 0
