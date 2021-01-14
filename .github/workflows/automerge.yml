@@ -1,6 +1,6 @@
 name: automerge
 on:
-  status: {}  # https://docs.github.com/en/free-pro-team@latest/rest/reference/repos#statuses
+  status: {state: success}  # https://docs.github.com/en/free-pro-team@latest/rest/reference/repos#statuses
 jobs:
   automerge:
     runs-on: ubuntu-latest
