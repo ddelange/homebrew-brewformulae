@@ -1,6 +1,15 @@
 name: automerge
 on:
-  status: {state: success}  # https://docs.github.com/en/free-pro-team@latest/rest/reference/repos#statuses
+  # trigger when checks pass https://docs.github.com/en/free-pro-team@latest/rest/reference/repos#statuses
+  status:
+    state: success
+  # trigger when checks already passed and a required review is submitted
+  pull_request_review:
+    types: [submitted]
+  # trigger when draft PR is converted to PR
+  pull_request:
+    types: [ready_for_review]
+
 jobs:
   automerge:
     runs-on: ubuntu-latest
@@ -8,8 +17,11 @@ jobs:
       - name: automerge
         uses: pascalgn/automerge-action@master
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # provided by Workflow runner
           MERGE_FILTER_AUTHOR: ddelange
           MERGE_METHOD: squash
-          MERGE_RETRY_SLEEP: 600000
-          MERGE_LABELS: '!WIP'  # merge PR when branch protection allows it (checks, reviews, draft, ...)
+          MERGE_RETRIES: 0
+          MERGE_LABELS: '!WIP'  # merge the PR when branch protection allows it (checks, reviews, draft, ...)
+          UPDATE_LABELS: ''  # merge in upstream when upstream has "Require branches to be up to date before merging"
+          MERGE_DELETE_BRANCH: true
+          UPDATE_RETRIES: 0
