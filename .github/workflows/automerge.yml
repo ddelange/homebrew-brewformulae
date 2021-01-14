@@ -2,12 +2,12 @@ name: automerge
 on:
   # trigger when checks status changes https://docs.github.com/en/free-pro-team@latest/rest/reference/repos#statuses
   status: {}
-  # trigger when checks already passed and a required review is submitted, or labels change
+  # trigger when checks already passed and a required review is submitted
   pull_request_review:
-    types: [submitted, labeled, unlabeled]
-  # trigger when draft PR is converted to PR
+    types: [submitted]
+  # trigger when draft PR is converted to PR, or labels change
   pull_request:
-    types: [ready_for_review]
+    types: [ready_for_review, labeled, unlabeled]
 
 jobs:
   automerge:
