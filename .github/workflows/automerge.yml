@@ -1,7 +1,7 @@
 name: automerge
 on:
   # trigger when checks status changes https://docs.github.com/en/free-pro-team@latest/rest/reference/repos#statuses
-  status: {}
+  status:
   # trigger when checks already passed and a required review is submitted
   pull_request_review:
     types: [submitted]
