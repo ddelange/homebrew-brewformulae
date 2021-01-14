@@ -1,14 +1,14 @@
 name: automerge
 on:
   # trigger when checks complete
-  check_run:
-  status:
+  workflow_run:
+    types: [completed]
   # trigger when checks already passed and a required review is submitted
   pull_request_review:
     types: [submitted]
-  # trigger when draft PR is converted to PR, or labels change
+  # trigger when draft PR is converted to PR, or labels change, or base branch is updated (synchronize)
   pull_request:
-    types: [ready_for_review, labeled, unlabeled]
+    types: [ready_for_review, labeled, unlabeled, synchronize]
 
 jobs:
   automerge:
@@ -22,6 +22,6 @@ jobs:
           MERGE_METHOD: squash
           MERGE_RETRIES: 0
           MERGE_LABELS: '!WIP'  # merge the PR when branch protection allows it (checks, reviews, draft, ...)
-          UPDATE_LABELS: ''  # merge in upstream when upstream has "Require branches to be up to date before merging"
+          UPDATE_LABELS: ''  # update with base branch when base has "Require branches to be up to date before merging"
           MERGE_DELETE_BRANCH: true
           UPDATE_RETRIES: 0
