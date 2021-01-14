@@ -1,6 +1,6 @@
 name: automerge
 on:
-  # trigger when checks complete (for another workflow to trigger this, it needs to do a checkout@v2 with personal access token
+  # trigger when checks complete (for another workflow to trigger this, it needs to do a checkout@v2 with a personal access token)
   status:
   # trigger when checks already passed and a required review is submitted
   pull_request_review:
