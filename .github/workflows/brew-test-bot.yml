@@ -18,8 +18,7 @@ jobs:
         os: [ubuntu-latest, macos-latest]
     steps:
       - uses: actions/checkout@v2
-        # need to use the personal access token (PAT) so that this workflow can trigger other
-        # workflows. See https://docs.github.com/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows#triggering-new-workflows-using-a-personal-access-token
+        # custom access token with public_repo scope https://github.community/t/triggering-a-new-workflow-from-another-workflow/16250/38
         with:
           token: ${{ secrets.TOKEN }}
       - name: Set up Homebrew
