@@ -1,22 +1,16 @@
 name: automerge
 on:
-  pull_request:
-    types:
-      - labeled
-      - unlabeled
-      - synchronize
-      - opened
-      - edited
-      - ready_for_review
-      - reopened
-      - unlocked
-  pull_request_review:
-    types:
-      - submitted
+  # trigger when checks of a PR complete
   check_suite:
-    types:
-      - completed
-  status: {}
+    types: [completed]
+    branches-ignore: [$default-branch]
+  # trigger when checks already passed and a required review is submitted
+  pull_request_review:
+    types: [submitted]
+  # trigger when draft PR is converted to PR, or labels change, or base branch is updated (synchronize)
+  pull_request:
+    types: [ready_for_review, labeled, unlabeled, synchronize]
+
 jobs:
   automerge:
     runs-on: ubuntu-latest
@@ -24,8 +18,11 @@ jobs:
       - name: automerge
         uses: pascalgn/automerge-action@master
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # provided by Workflow runner
           MERGE_FILTER_AUTHOR: ddelange
           MERGE_METHOD: squash
-          MERGE_RETRY_SLEEP: 600000
-          MERGE_LABELS: '!WIP'  # merge all PRs when checks passed
+          MERGE_RETRIES: 0
+          MERGE_LABELS: '!WIP'  # merge the PR when branch protection allows it (checks, reviews, draft, ...)
+          UPDATE_LABELS: ''  # update with base branch when base has "Require branches to be up to date before merging"
+          MERGE_DELETE_BRANCH: true
+          UPDATE_RETRIES: 0
