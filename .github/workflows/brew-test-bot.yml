@@ -21,15 +21,18 @@ jobs:
         # custom access token with public_repo scope https://github.community/t/triggering-a-new-workflow-from-another-workflow/16250/38
         with:
           token: ${{ secrets.TOKEN }}
+      
       - name: Set up Homebrew
         id: setup
         uses: Homebrew/actions/setup-homebrew@master
+      
       - name: Cache gems
         uses: actions/cache@v2
         with:
           path: ${{steps.setup.outputs.gems-path}}
           key: ${{runner.os}}-rubygems-${{steps.setup.outputs.gems-hash}}
           restore-keys: ${{runner.os}}-rubygems-
+      
       # https://github.com/Homebrew/homebrew-test-bot/issues/498
       # - name: Check formulae
       #   run: brew test-bot
@@ -41,3 +44,16 @@ jobs:
           rm /usr/local/bin/2to3 || true  # rm MacOS default link
           ( brew upgrade python || brew install python ) || ( brew unlink python && brew link python ) 
           brew install ./Formula/*.rb
+          
+      # trigger automerge.yml https://stackoverflow.com/a/59697492/5511061
+      - name: Trigger status event
+        run: >-
+          curl -L -X POST 
+          -H "Content-Type: application/json"
+          -H "Authorization: token ${{secrets.TOKEN}}"
+          -d '{
+            "state": "success",
+            # "target_url": "https://you-can-add-a.url/",
+            # "description": "All tests passed", "context": "your-custom/status-event"
+          }'
+          "https://api.github.com/repos/${GITHUB_REPOSITORY}/statuses/${GITHUB_SHA}"
