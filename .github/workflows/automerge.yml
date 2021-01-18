@@ -1,7 +1,8 @@
 name: automerge
 on:
   # trigger when checks complete
-  status:
+  repository_dispatch:
+    types: [checks-complete]
   # trigger when checks already passed and a required review is submitted
   pull_request_review:
     types: [submitted]
