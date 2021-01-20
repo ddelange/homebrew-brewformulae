@@ -18,7 +18,7 @@ jobs:
         uses: pascalgn/automerge-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # provided by Workflow runner
-          MERGE_FILTER_AUTHOR: ddelange
+          MERGE_FILTER_AUTHOR: ddelange  # or simply MERGE_FORKS: false
           MERGE_METHOD: squash
           MERGE_RETRIES: 0
           MERGE_LABELS: '!WIP,!do not merge'  # merge the PR when branch protection allows it (checks, reviews, draft, ...)
