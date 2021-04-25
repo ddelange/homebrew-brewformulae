@@ -2,8 +2,8 @@ class Yt < Formula
   desc "Fine-tuning the use of youtube-dl for audio and videophiles"
 
   homepage "https://github.com/ddelange/yt"
-  url "https://github.com/ddelange/yt/archive/0.3.0.tar.gz"
-  sha256 "55b2401bf055541eff24bba1cc4f8b1c5adaa6440a4c54ed382b9ecb25910e2f"
+  url "https://github.com/ddelange/yt/archive/0.3.1.tar.gz"
+  sha256 "5094706a6d5047366f1e9906601200b1d447dc5e537a3a05c50669a2914a8e77"
 
   head "https://github.com/ddelange/yt.git"
 
