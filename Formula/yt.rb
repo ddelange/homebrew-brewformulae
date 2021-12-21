@@ -7,8 +7,6 @@ class Yt < Formula
 
   head "https://github.com/ddelange/yt.git"
 
-  bottle :unneeded
-
   depends_on "atomicparsley"
   depends_on "homebrew-ffmpeg/ffmpeg/ffmpeg" => ["with-fdk-aac", "with-srt", "with-wavpack", "with-xvid"]
   depends_on "youtube-dl"
