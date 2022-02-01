@@ -14,6 +14,7 @@ jobs:
   automerge:
     runs-on: ubuntu-latest
     steps:
+      - run: sleep 10  # to wait for the CI workflow post-steps
       - name: automerge
         uses: pascalgn/automerge-action@v0.14.3
         env:
