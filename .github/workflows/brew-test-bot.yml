@@ -36,6 +36,7 @@ jobs:
         env:
           HOMEBREW_NO_INSTALL_CLEANUP: 1
           HOMEBREW_NO_AUTO_UPDATE: 1
+          HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK: 1
         run: |
           rm /usr/local/bin/2to3 || true  # rm MacOS default link
           ( brew upgrade python || brew install python ) || ( brew unlink python && brew link python ) 
