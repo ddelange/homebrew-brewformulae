@@ -5,15 +5,9 @@ My [tap](https://docs.brew.sh/Taps) repo for brew formulae.
 
 ## How do I install these formulae?
 
-`brew install ddelange/brewformulae/<formula>`
+In one line: `brew install ddelange/brewformulae/<formula>`
 
 Or `brew tap ddelange/brewformulae` and then `brew install <formula>`.
-
-Or install via URL (which will not receive updates):
-
-```
-brew install https://raw.githubusercontent.com/ddelange/brewformulae/master/Formula/<formula>.rb
-```
 
 
 ## Documentation

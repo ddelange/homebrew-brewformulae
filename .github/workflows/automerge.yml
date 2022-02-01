@@ -1,8 +1,7 @@
 name: automerge
 on:
-  # trigger when checks complete (manually triggered as final step of CI workflow)
-  repository_dispatch:
-    types: [checks-complete]
+  # trigger when checks complete
+  status: {}
   # trigger when checks already passed and a required review is submitted
   pull_request_review:
     types: [submitted]
@@ -15,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: automerge
-        uses: pascalgn/automerge-action@master
+        uses: pascalgn/automerge-action@v0.14.3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # provided by Workflow runner
           MERGE_FILTER_AUTHOR: ddelange  # or simply MERGE_FORKS: false
