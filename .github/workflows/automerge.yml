@@ -1,7 +1,8 @@
 name: automerge
 on:
-  # trigger when checks complete
-  status: {}
+  # trigger when checks complete (manually triggered as final step of CI workflow)
+  repository_dispatch:
+    types: [checks-complete]
   # trigger when checks already passed and a required review is submitted
   pull_request_review:
     types: [submitted]
@@ -19,8 +20,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # provided by Workflow runner
           MERGE_FILTER_AUTHOR: ddelange  # or simply MERGE_FORKS: false
           MERGE_METHOD: squash
-          MERGE_RETRIES: 0
           MERGE_LABELS: '!WIP,!do not merge'  # merge the PR when branch protection allows it (checks, reviews, draft, ...)
           UPDATE_LABELS: ''  # update with base branch when base has "Require branches to be up to date before merging"
           MERGE_DELETE_BRANCH: true
-          UPDATE_RETRIES: 0
