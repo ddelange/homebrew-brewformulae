@@ -10,9 +10,9 @@ class YoutubeDl < Formula
 
   def install
     virtualenv_install_with_resources
-    man1.install_symlink libexec/"share/man/man1/youtube-dl.1" => "youtube-dl.1"
-    bash_completion.install libexec/"etc/bash_completion.d/youtube-dl.bash-completion"
-    fish_completion.install libexec/"etc/fish/completions/youtube-dl.fish"
+    # man1.install_symlink libexec/"share/man/man1/youtube-dl.1" => "youtube-dl.1"
+    # bash_completion.install libexec/"etc/bash_completion.d/youtube-dl.bash-completion"
+    # fish_completion.install libexec/"etc/fish/completions/youtube-dl.fish"
     system "#{bin}/youtube-dl", "--rm-cache-dir"  # https://github.com/ytdl-org/youtube-dl/issues/31164#issuecomment-1259189511
   end
 
