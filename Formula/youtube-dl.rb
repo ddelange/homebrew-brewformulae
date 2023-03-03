@@ -6,7 +6,7 @@ class YoutubeDl < Formula
   head "https://github.com/ytdl-org/youtube-dl.git"
   license "Unlicense"
 
-  depends_on "python@3.10"
+  depends_on "python@3.11"
 
   def install
     virtualenv_install_with_resources
