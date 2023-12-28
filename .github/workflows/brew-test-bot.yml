@@ -40,7 +40,7 @@ jobs:
         run: |
           rm /usr/local/bin/2to3 || true  # rm MacOS default link
           ( brew upgrade python || brew install python ) || ( brew unlink python && brew link python ) 
-          brew install ./Formula/*.rb
+          brew install --HEAD ./Formula/*.rb
           
       - name: Trigger automerge
         uses: peter-evans/repository-dispatch@v1
